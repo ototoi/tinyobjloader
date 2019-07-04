@@ -146,7 +146,7 @@ typedef enum {
   TEXTURE_TYPE_CUBE_RIGHT
 } texture_type_t;
 
-typedef struct {
+typedef struct texture_option_t_ {
   texture_type_t type;      // -type (default TEXTURE_TYPE_NONE)
   real_t sharpness;         // -boost (default 1.0?)
   real_t brightness;        // base_value in -mm option (default 0)
@@ -166,7 +166,7 @@ typedef struct {
                            // value. Usually `sRGB` or `linear` (default empty).
 } texture_option_t;
 
-typedef struct {
+typedef struct material_t_ {
   std::string name;
 
   real_t ambient[3];
@@ -311,7 +311,7 @@ typedef struct {
 
 } material_t;
 
-typedef struct {
+typedef struct tag_t_ {
   std::string name;
 
   std::vector<int> intValues;
@@ -321,13 +321,13 @@ typedef struct {
 
 // Index struct to support different indices for vtx/normal/texcoord.
 // -1 means not used.
-typedef struct {
+typedef struct index_t_ {
   int vertex_index;
   int normal_index;
   int texcoord_index;
 } index_t;
 
-typedef struct {
+typedef struct mesh_t_ {
   std::vector<index_t> indices;
   std::vector<unsigned char>
       num_face_vertices;          // The number of vertices per
@@ -344,17 +344,17 @@ typedef struct {
 //  std::vector<int> indices;  // pairs of indices for lines
 //} path_t;
 
-typedef struct {
+typedef struct lines_t_ {
   // Linear flattened indices.
   std::vector<index_t> indices;        // indices for vertices(poly lines)
   std::vector<int> num_line_vertices;  // The number of vertices per line.
 } lines_t;
 
-typedef struct {
+typedef struct points_t_ {
   std::vector<index_t> indices;  // indices for points
 } points_t;
 
-typedef struct {
+typedef struct shape_t_ {
   std::string name;
   mesh_t mesh;
   lines_t lines;
