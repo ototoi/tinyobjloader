@@ -116,6 +116,9 @@ PYBIND11_MODULE(tinyobjloader, tobj_module)
   py::class_<mesh_t>(tobj_module, "mesh_t")
     .def(py::init<>())
     .def_readonly("indices", &mesh_t::indices)
+    .def_readonly("num_face_vertices", &mesh_t::num_face_vertices)
+    .def_readonly("material_ids", &mesh_t::material_ids)
+    .def_readonly("smoothing_group_ids", &mesh_t::smoothing_group_ids)
     .def("numpy_indices", [] (mesh_t &instance) {
         auto ret = py::array_t<int>(instance.indices.size() * 3);
         py::buffer_info buf = ret.request();
