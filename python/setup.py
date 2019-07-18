@@ -12,7 +12,7 @@ m = setuptools.Extension('tinyobjloader',
 
 
 setuptools.setup (name = 'tinyobjloader',
-       version = '0.1',
+       version = '0.1.1m',
        description = 'Python module for tinyobjloader',
        long_description = long_description,
        long_description_content_type = "text/markdown",
